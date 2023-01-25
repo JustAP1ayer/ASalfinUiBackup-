@@ -1088,7 +1088,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     
                         Slider.InputBegan:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
-                                Dragging = false
+                                Dragging = true
                                 IsSliding = false
                                 move(Pressed)
                             end
@@ -1096,7 +1096,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     
                         Slider.InputEnded:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
-                                Dragging = false
+                                Dragging = true
                                 IsSliding = false
                                 move(Pressed)
                             end
