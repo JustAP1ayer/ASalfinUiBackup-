@@ -1,5 +1,6 @@
 # ASalfinUiBackup-
-```getgenv().LibTheme = {
+```lua
+getgenv().LibTheme = {
     MainColor = Color3.fromRGB(35,35,40);
     BrighterMainColor = Color3.fromRGB(40,40,45);
     IconsColor = Color3.fromRGB(100,100,120);
