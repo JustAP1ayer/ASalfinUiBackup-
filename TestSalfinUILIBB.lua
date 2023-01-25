@@ -1076,9 +1076,9 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                             IsSliding = true;
                             local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
                             local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+                            SliderProgress:TweenSize(size, "Out", "Sine", 0.1,true);
                             RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
-                            value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                            value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
                             SliderValue.Text = tostring(value) .. " "
                             arg5(value)
                         end
@@ -1089,11 +1089,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                         Slider.InputBegan:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = true
-                                Sliding = false 
-                                TweenService:Create(SliderBorder,TweenInfo.new(0.3),{Transparency = 0.85}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundTransparency = 0}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(37, 150, 255)}):Play()
-                                TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
+                                IsSliding = false
                                 move2(Pressed)
                             end
                         end)
@@ -1101,11 +1097,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                         Slider.InputEnded:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = false
-                                Sliding = false
-                                TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
-                                TweenService:Create(SliderBorder,TweenInfo.new(0.3),{Transparency = 0.95}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundTransparency = 0.85}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,255,255)}):Play()
+                                IsSliding = false
                                 move(Pressed)
                             end
                         end)
