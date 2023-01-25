@@ -1143,7 +1143,6 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                                 TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,255,255)}):Play()
                             end
                         end)
-                        return Slider;	
                     end
                     if component == "TimePicker" then
                         local hour,minute = 00,00
