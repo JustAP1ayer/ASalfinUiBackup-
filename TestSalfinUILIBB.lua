@@ -1069,32 +1069,23 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                         Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
                         Tween(SliderCircle,0.3,{BackgroundColor3 = Library["theme"]["BrighterMainColor"]})
     
-                        local Sliding,Dragging = false
-                        local RealValue = defaultValue
+                        local IsSliding,Dragging = false
+                        local RealValue = arg6
                         local value
-                        local function move(Pressed)
-                            Sliding = true;
-                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderBase.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderBase.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            SliderProgress:TweenSize(size, "Out", "Sine", 0.1, true,nil);
-                            RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
-                            value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-                            TextLabel.Text = tostring(value)
-                            callback(value)
-                        end
-        
                         local function move2(Pressed)
-                            Sliding = true;
-                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderBase.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderBase.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            SliderProgress:TweenSize(size, "Out", "Sine", 0.1, true,nil);
-                            RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
-                            value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-                            TextLabel.Text = tostring(value)
+                            IsSliding = true;
+                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+                            RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
+                            value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                            SliderValue.Text = tostring(value) .. " "
+                            arg5(value)
                         end
-        
-                     
-        
+    
+                        -- this slider script i just skidded 2 years ago, im still using it
+    
+    
                         Slider.InputBegan:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = true
@@ -1106,7 +1097,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                                 move2(Pressed)
                             end
                         end)
-        
+    
                         Slider.InputEnded:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = false
@@ -1118,30 +1109,24 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                                 move(Pressed)
                             end
                         end)
-        
+    
                         game:GetService("UserInputService").InputChanged:Connect(function(Pressed)
                             if Dragging and Pressed.UserInputType == Enum.UserInputType.MouseMovement then
                                 move2(Pressed)
                             end
                         end)
-        
+    
                         Slider.MouseEnter:Connect(function()
-                            if not Dragging then
-                                TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
-                                TweenService:Create(SliderBorder,TweenInfo.new(0.3),{Transparency = 0.9}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundTransparency = 0}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(37, 150, 255)}):Play()
-                                TweenService:Create(Slider,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
-                            end
+                            Tween(CircleStroke,0.3,{Color = Library["theme"]["Accent"]})
+                            Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
+                            Tween(SliderCircle,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
                         end)
+    
                         Slider.MouseLeave:Connect(function()
-                            if not Dragging then
-                                TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
-                                TweenService:Create(SliderBorder,TweenInfo.new(0.3),{Transparency = 0.95}):Play()
-                                TweenService:Create(Slider,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundTransparency = 0.85}):Play()
-                                TweenService:Create(SliderProgress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,255,255)}):Play()
-                            end
+                            repeat wait() until not Dragging
+                            Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
+                            Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                            Tween(SliderCircle,0.3,{BackgroundColor3 = Library["theme"]["BrighterMainColor"]})
                         end)
                     end
                     if component == "TimePicker" then
