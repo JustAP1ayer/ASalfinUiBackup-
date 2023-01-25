@@ -11,7 +11,7 @@
             DarkText = Color3.fromRGB(75,75,75);
             BrightText = Color3.fromRGB(50,50,50);
             Font = "Gotham";
-            SoundVolume = 0.5
+            SoundVolume = 0.5;
     
     
         dark theme
@@ -23,7 +23,7 @@
             DarkText = Color3.fromRGB(170,170,170);
             BrightText = Color3.fromRGB(145,145,145);
             Font = "Gotham";
-            SoundVolume = 0.5
+            SoundVolume = 0.5;
     
         
         dark green theme
@@ -35,7 +35,7 @@
             DarkText = Color3.fromRGB(170,170,170);
             BrightText = Color3.fromRGB(145,145,145);
             Font = "Gotham";
-            SoundVolume = 0.5
+            SoundVolume = 0.5;
     
     
         dark red theme
@@ -47,7 +47,7 @@
             DarkText = Color3.fromRGB(170,170,170);
             BrightText = Color3.fromRGB(145,145,145);
             Font = "Gotham";
-            SoundVolume = 0.5
+            SoundVolume = 0.5;
     ]]
     
     
