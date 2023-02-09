@@ -72,7 +72,7 @@ local Page = Main.Page("Page","3926305904",Vector2.new(924, 204),Vector2.new(36,
 local Section = Page.Section("Section")
 
 local Toggle = Section.Component("Toggle","Toggle Name",function(bool)
-  
+  -- Code
 end,false)
 
 local Dropdown = Section.Component("Dropdown","Dropdown Name",table,false,function(string,bool)
@@ -80,11 +80,15 @@ local Dropdown = Section.Component("Dropdown","Dropdown Name",table,false,functi
 end,false)
 
 local Slider = Section.Component("Slider","Slider Name",0,100,false,function(value)
+-- Code
+end,50)
 
+local Slider2 = Section.Component("Slider2","Slider Name",0,100,false,function(value)
+-- Code
 end,50)
 
 local Button = Section.Component("Button","Button Name",function()
-
+-- Code
 end)
 
 local Paragraph = Section.Component("Card", "Title", "Text here")
