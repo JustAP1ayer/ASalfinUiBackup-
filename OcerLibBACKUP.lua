@@ -1,4 +1,4 @@
- leaf = true 
+leaf = true
 local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/RU9U8JIT9IUJE.lua"))();
     local make = maker.Instance
     
@@ -177,7 +177,6 @@ end
 frame.InputBegan:Connect(function(input)
 	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
         if not Leafdrag then
-        print(Leafdrag)
 		dragToggle = true
 		dragStart = input.Position
 		startPos = frame.Position
@@ -194,7 +193,6 @@ UIS.InputChanged:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch  then
 		if dragToggle then
             if not Leafdrag then
-            print(Leafdrag)
 			updateInput(input)
             end
 		end
@@ -1034,7 +1032,7 @@ end)
                             end
                         end
                     end
-                    if component == "Slider" then
+                                        if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
                             Name = arg1;
@@ -1196,6 +1194,160 @@ end)
                             Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
                             Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
                             Tween(SliderCircle,0.3,{BackgroundColor3 = Library["theme"]["BrighterMainColor"]})
+                        end)
+                    end
+                    if component == "Slider2" then
+                        local Slider2 = make("TextLabel",{
+                            Parent = Section;
+                            Name = arg1;
+                            Size = UDim2.new(0.96,0,0,40);
+                            BorderSizePixel = 0;
+                            CornerRadius = UDim.new(0,5);
+                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+                            BackgroundTransparency = 0;
+                            Text = "   " .. arg1;
+                            TextColor3 = Library["theme"]["BrightText"];
+                            Font = Enum.Font[Library["theme"]["Font"]];
+                            TextXAlignment = Enum.TextXAlignment.Left;
+                            TextYAlignment = Enum.TextYAlignment.Top;
+                            TextSize = 15;
+                            ZIndex = 2;
+                        })
+    
+                        local Slider2Value = make("TextLabel",{
+                            Parent = Slider2;
+                            Name = arg1;
+                            Size = UDim2.new(1,0,0,15);
+                            BorderSizePixel = 0;
+                            CornerRadius = UDim.new(0,5);
+                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+                            BackgroundTransparency = 1;
+                            Text = arg6 .. " ";
+                            TextColor3 = Library["theme"]["BrightText"];
+                            Font = Enum.Font[Library["theme"]["Font"]];
+                            TextXAlignment = Enum.TextXAlignment.Right;
+                            TextYAlignment = Enum.TextYAlignment.Center;
+                            TextSize = 15;
+                            ZIndex = 2;
+                        })
+    
+                        local Slider2Core = make("Frame",{
+                            Parent = Slider2;
+                            Name = "Slider2Core";
+                            AnchorPoint = Vector2.new(0.5,0.5);
+                            Position = UDim2.new(0.5,0,0.5,10);
+                            Size = UDim2.new(1,-20,0,5);
+                            BorderSizePixel = 0;
+                            CornerRadius = UDim.new(0,500);
+                            BackgroundColor3 = Library["theme"]["MainColor"];
+                            BackgroundTransparency = 0;
+                            ZIndex = 2;
+                        })
+    
+                        local Slider2Progress = make("Frame",{
+                            Parent = Slider2Core;
+                            Name = "Slider2Progress";
+                            Position = UDim2.new(0,0,0,0);
+                            Size = UDim2.new(0.5,0,1,0);
+                            BorderSizePixel = 0;
+                            CornerRadius = UDim.new(0,500);
+                            BackgroundColor3 = Library["theme"]["Accent"];
+                            BackgroundTransparency = 0;
+                            ZIndex = 2;
+                        })
+    
+                        local Slider2Circle = make("Frame",{
+                            Parent = Slider2Progress;
+                            Name = "circle";
+                            AnchorPoint = Vector2.new(0,0.5);
+                            Size = UDim2.new(0,8,0,8);
+                            Position = UDim2.new(1,0,0.5,0);
+                            BorderSizePixel = 0;
+                            BackgroundColor3 = Library["theme"]["MainColor"];
+                            BackgroundTransparency = 0;
+                            CornerRadius = UDim.new(100,100);
+                            ZIndex = 2;
+                        })
+    
+                        local CircleStroke = make("UIStroke",{
+                            Parent = Slider2Circle;
+                            ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+                            Color = Library["theme"]["Accent"];
+                            Enabled = true;
+                            Thickness = 3;
+                        })
+    
+                        local Mouse = game.Players.LocalPlayer:GetMouse()
+    
+                        local function UpdateSlider2(val)
+                            local percent = (Mouse.X - Slider2Progress.AbsolutePosition.X) / Slider2Progress.AbsoluteSize.X
+    
+                            if val then
+                                percent = (val - arg2) / (arg3 - arg2)
+                            end
+    
+                            percent = math.clamp(percent, 0, 1)
+    
+                            Slider2Progress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
+                        end
+    
+                        UpdateSlider2(arg6)
+    
+                        Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
+                        Tween(Slider2Progress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                        Tween(Slider2Circle,0.3,{BackgroundColor3 = Library["theme"]["BrighterMainColor"]})
+    
+                        local IsSliding,Dragging = false
+                        local RealValue = arg6
+                        local value
+                        local function move(Pressed)
+                            IsSliding = true;
+                            local pos = UDim2.new(math.clamp((Pressed.Position.X - Slider2Core.AbsolutePosition.X) / Slider2Core.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            local size = UDim2.new(math.clamp((Pressed.Position.X - Slider2Core.AbsolutePosition.X) / Slider2Core.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            Slider2Progress:TweenSize(size, "Out", "Quart", 0.2,true);
+                            RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
+                            value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                            Slider2Value.Text = tostring(value) .. " "
+                            arg5(value)
+                        end    
+    
+                        Slider2.InputBegan:Connect(function(Pressed)
+                            if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
+                                Dragging = true
+                                Leafdrag = true
+                                IsSliding = false
+                                move(Pressed)
+                            end
+                        end)
+    
+                        Slider2.InputEnded:Connect(function(Pressed)
+                            if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
+                                Dragging = false
+                                Leafdrag = false
+                                IsSliding = false
+                                move(Pressed)
+                            end
+                        end)
+    
+                        game:GetService("UserInputService").InputChanged:Connect(function(Pressed)
+                            if Dragging and Pressed.UserInputType == Enum.UserInputType.MouseMovement then
+                                move(Pressed)
+                            end
+                        end)
+    
+                        Slider2.MouseEnter:Connect(function()
+                            Leafdrag = true
+                            Tween(CircleStroke,0.3,{Color = Library["theme"]["Accent"]})
+                            Tween(Slider2Progress,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
+                            Tween(Slider2Circle,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                        end)
+    
+                        Slider2.MouseLeave:Connect(function()
+                            Leafdrag = false
+                            repeat wait() until not Dragging
+                            Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
+                            Tween(Slider2Progress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                            Tween(Slider2Circle,0.3,{BackgroundColor3 = Library["theme"]["BrighterMainColor"]})
                         end)
                     end
                     if component == "TimePicker" then
