@@ -1,4 +1,8 @@
 # ASalfinUiBackup-
+
+Slider and Slider2 is different as Slider works after you finish sliding but Slider2 is a calling script, which it would always update when sliding
+
+
 ```lua
 
     --[[
