@@ -7,7 +7,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     local SupportedProperties = {
         "TextTransparency"  , "ImageTransparency" , "BackgroundTransparency"
     }
-    
+
     local allproperties = {}
     local TabsProperties = {}
     
@@ -107,7 +107,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
         Font = "Gotham";
         SoundVolume = 0.5;
         HideKey = "LeftAlt"
-    }
+    }assert(leaf, "")
     
     local Library = {
         ["theme"] = getgenv().LibTheme or defaulttheme
@@ -119,6 +119,8 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
         Enabled = false;
         IgnoreGuiInset = true
     })
+
+
     
     syn.protect_gui(screeng)
     
@@ -132,8 +134,9 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     local function Tween(instance, time, properties)
         TweenService:Create(instance, TweenInfo.new(time), properties):Play()
     end
+
     
-    function Library.Main(text : string)
+    function Library.Main(text )
         local inmain = {}
     
         local Main = make("Frame",{
@@ -148,8 +151,70 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
             CornerRadius = UDim.new(0,5);
             ClipsDescendants = true;
             Active = true;
+            Draggable = false 
+        })
+task.spawn(function ()
+    print('Ui library fixed by leaf')
+end)
+local Leafdrag = false
+local UIS = game:GetService('UserInputService')
+local frame = Main
+local dragToggle = nil
+local dragSpeed = 0.25
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+    if not Leafdrag then
+	local delta = input.Position - dragStart
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+    end
+end
+
+frame.InputBegan:Connect(function(input)
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+        if not Leafdrag then
+        print(Leafdrag)
+		dragToggle = true
+		dragStart = input.Position
+		startPos = frame.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragToggle = false
+			end
+		end)
+	end
+end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch  then
+		if dragToggle then
+            if not Leafdrag then
+            print(Leafdrag)
+			updateInput(input)
+            end
+		end
+	end
+end)
+--[[
+        local MainLeaf = make("Frame",{
+            Parent = Main;
+            Name = "MainLeaf";
+            AnchorPoint = Vector2.new(0.5,0.5);
+            Position = UDim2.new(0.5,0,0.55,0);
+            Size = UDim2.new(0,x - 30,0,y - 30);
+            BorderSizePixel = 0;
+            BackgroundTransparency = 0;
+            BackgroundColor3 = Library["theme"]["MainColor"];
+            CornerRadius = UDim.new(0,5);
+            ClipsDescendants = true;
+            Active = true;
             Draggable = true
         })
+        ]]
     
         local LogoIcon = make("ImageLabel",{
             Parent = Main;
@@ -397,9 +462,9 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
             end
         end)
         local pagebuttonstable = {}
-        function inmain.Page(text : string,iconid : string, rectOffset, rectSize,scaletype)
+        function inmain.Page(text ,iconid , rectOffset, rectSize,scaletype)
             local inpage = {}
-            pagescount += 1
+            pagescount = pagescount+1
             local posincanvas = pagescount
     
             local PageButton = make("TextButton",{
@@ -501,7 +566,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                     end
                 end
             end)
-            function inpage.Section(text : string)
+            function inpage.Section(text )
                 local insection = {}
                 local Section = make("Frame",{
                     Parent = Page;
@@ -541,7 +606,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                     SortOrder = Enum.SortOrder.LayoutOrder
                 })
     
-                function insection.Component(component : string, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+                function insection.Component(component , arg1, arg2, arg3, arg4, arg5, arg6, arg7)
                     if component == "Card" then
                         local TitleLabel = make("TextLabel",{
                             Parent = Section;
@@ -878,7 +943,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                             isopened = not isopened
                         end)
     
-                        local function addchoice(atext : string, val)
+                        local function addchoice(atext , val)
                             local DropdownChoice = make("TextButton",{
                                 Parent = SelectablesFrame;
                                 Name = atext;
@@ -1082,6 +1147,13 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                             SliderValue.Text = tostring(value) .. " "
                             arg5(value)
                         end
+
+                        local function move2(Pressed)
+                            IsSliding = true;
+                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+                        end
     
                         -- this slider script i just skidded 2 years ago, im still using it
     
@@ -1089,14 +1161,16 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                         Slider.InputBegan:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = true
+                                Leafdrag = true
                                 IsSliding = false
-                                move(Pressed)
+                                move2(Pressed)
                             end
                         end)
     
                         Slider.InputEnded:Connect(function(Pressed)
                             if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
                                 Dragging = false
+                                Leafdrag = false
                                 IsSliding = false
                                 move(Pressed)
                             end
@@ -1104,17 +1178,19 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     
                         game:GetService("UserInputService").InputChanged:Connect(function(Pressed)
                             if Dragging and Pressed.UserInputType == Enum.UserInputType.MouseMovement then
-                                move(Pressed)
+                                move2(Pressed)
                             end
                         end)
     
                         Slider.MouseEnter:Connect(function()
+                            Leafdrag = true
                             Tween(CircleStroke,0.3,{Color = Library["theme"]["Accent"]})
                             Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
                             Tween(SliderCircle,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
                         end)
     
                         Slider.MouseLeave:Connect(function()
+                            Leafdrag = false
                             repeat wait() until not Dragging
                             Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
                             Tween(SliderProgress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
@@ -1287,7 +1363,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
             end
             return inpage;
         end
-        function inmain.Logs(title : string)
+        function inmain.Logs(title )
             local inlogs = {}
     
             local Logs = make("ScrollingFrame",{
@@ -1424,7 +1500,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
                 Tween(SecondLabel,0,{TextTransparency = 0})
                 Tween(TitleLabel,0,{TextTransparency = 0})
     
-                function inlog.Button(text : string, func)
+                function inlog.Button(text ,func)
                     local Button = make("TextButton",{
                         Parent = Buttons;
                         Name = text;
@@ -1485,7 +1561,7 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
     
                 end
     
-                function inlog.ChangeText(tochange : string)
+                function inlog.ChangeText(tochange )
                     TitleLabel.Text = tochange
                 end
     
