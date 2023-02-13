@@ -223,7 +223,7 @@ end)
             Position = UDim2.new(1,-55,0,0);
             BorderSizePixel = 0;
             BackgroundTransparency = 1;
-            Image = "rbxassetid://10562470318";
+            Image = "rbxassetid://11345695781";
             ImageTransparency = 0;
             ImageColor3 = Color3.fromRGB(255,255,255);
             ScaleType = Enum.ScaleType["Crop"];
