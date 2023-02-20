@@ -120,13 +120,6 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
         Enabled = false;
         IgnoreGuiInset = true
     })
-
-
-    
-    syn.protect_gui(screeng)
-    
-    
-    
     
     local pagescount = 0
     
