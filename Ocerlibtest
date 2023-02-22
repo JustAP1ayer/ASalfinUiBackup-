@@ -120,13 +120,6 @@ local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1
         Enabled = false;
         IgnoreGuiInset = true
     })
-
-
-    
-    syn.protect_gui(screeng)
-    
-    
-    
     
     local pagescount = 0
     
@@ -223,7 +216,7 @@ end)
             Position = UDim2.new(1,-55,0,0);
             BorderSizePixel = 0;
             BackgroundTransparency = 1;
-            Image = "rbxassetid://10562470318";
+            Image = "rbxassetid://11345695781";
             ImageTransparency = 0;
             ImageColor3 = Color3.fromRGB(255,255,255);
             ScaleType = Enum.ScaleType["Crop"];
@@ -928,87 +921,80 @@ end)
                             SortOrder = Enum.SortOrder.LayoutOrder
                         })
     
-                        local isopened = false
-                        Dropdown.MouseButton1Click:Connect(function()
-                            if isopened then
-                                Tween(ArrowIcon,0.5,{Rotation = 90})
-                                SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
-                                Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
-                            else
-                                Tween(ArrowIcon,0.5,{Rotation = 180})
-                                SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,100),"Out","Quart",0.5,true)
-                                Dropdown:TweenSize(UDim2.new(0.96,0,0,140),"Out","Quart",0.5,true)
-                            end
-                            isopened = not isopened
-                        end)
-    
-                        local function addchoice(atext , val)
-                            local DropdownChoice = make("TextButton",{
-                                Parent = SelectablesFrame;
-                                Name = atext;
-                                Size = UDim2.new(0.96,0,0,25);
-                                BorderSizePixel = 0;
-                                CornerRadius = UDim.new(0,5);
-                                BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                                BackgroundTransparency = 0;
-                                Text = "     " .. atext;  
-                                TextColor3 = Library["theme"]["DarkText"];
-                                Font = Enum.Font[Library["theme"]["Font"]];
-                                TextXAlignment = Enum.TextXAlignment.Left;
-                                TextYAlignment = Enum.TextYAlignment.Center;
-                                TextSize = 14;
-                                ZIndex = 5;
-                                AutoButtonColor = false;
-                                ClipsDescendants = true;
-                            })
-    
-                            local IsSelected = make("Frame",{
-                                Parent = DropdownChoice;
-                                Name = "Dot";
-                                AnchorPoint = Vector2.new(0,0.5);
-                                Position = UDim2.new(0,5,0.5,0);
-                                Size = UDim2.new(0,10,0,10);
-                                BorderSizePixel = 0;
-                                CornerRadius = UDim.new(0,5000);
-                                BackgroundColor3 = Library["theme"]["MainColor"];
-                                BackgroundTransparency = 0;
-                                ZIndex = 5;
-                            })
-    
-                            selectables[DropdownChoice] = val == true or false
-                            if selectables[DropdownChoice] then
-                                IsSelected.BackgroundColor3 = Library["theme"]["Accent"];
-                            end
-        
-                            local mouseEnter = false
-        
-                            DropdownChoice.MouseButton1Click:Connect(function()
-                                spawn(function()
-                                    if arg3 == true then
-                                        selectables[DropdownChoice] = not selectables[DropdownChoice]
-                                        arg4(atext,selectables[DropdownChoice])
-                                        if selectables[DropdownChoice] then
-                                            Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
-                                            Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
-                                        else
-                                            Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["DarkText"]})
-                                            Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
-                                        end
-                                    else
-                                        for i,v in next,selectables do
-                                            if i ~= atext then
-                                                selectables[i] = false
-                                                Tween(i,0.3,{TextColor3 = Library["theme"]["DarkText"]})
-                                                Tween(i.Dot,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
-                                            end
-                                        end
-                                        selectables[DropdownChoice] = true
-                                        arg4(atext,val)
-                                        Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
-                                        Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
-                                    end
-                                end)
-                            end)
+                     local isopened = false
+
+Dropdown.MouseButton1Click:Connect(function()
+    if isopened then
+        Tween(ArrowIcon,0.5,{Rotation = 90})
+        SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
+        Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
+    else
+        Tween(ArrowIcon,0.5,{Rotation = 180})
+        SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,100),"Out","Quart",0.5,true)
+        Dropdown:TweenSize(UDim2.new(0.96,0,0,140),"Out","Quart",0.5,true)
+    end
+    isopened = not isopened
+end)
+
+local function addchoice(atext , val)
+    local DropdownChoice = make("TextButton",{
+        Parent = SelectablesFrame;
+        Name = atext;
+        Size = UDim2.new(0.96,0,0,25);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 0;
+        Text = "     " .. atext;  
+        TextColor3 = Library["theme"]["DarkText"];
+        Font = Enum.Font[Library["theme"]["Font"]];
+        TextXAlignment = Enum.TextXAlignment.Left;
+        TextYAlignment = Enum.TextYAlignment.Center;
+        TextSize = 14;
+        ZIndex = 5;
+        AutoButtonColor = false;
+        ClipsDescendants = true;
+    })
+
+    local IsSelected = make("Frame",{
+        Parent = DropdownChoice;
+        Name = "Dot";
+        AnchorPoint = Vector2.new(0,0.5);
+        Position = UDim2.new(0,5,0.5,0);
+        Size = UDim2.new(0,10,0,10);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5000);
+        BackgroundColor3 = Library["theme"]["MainColor"];
+        BackgroundTransparency = 0;
+        ZIndex = 5;
+    })
+
+    selectables[DropdownChoice] = val == true or false
+    if selectables[DropdownChoice] then
+        IsSelected.BackgroundColor3 = Library["theme"]["Accent"];
+    end
+
+    local mouseEnter = false
+
+    DropdownChoice.MouseButton1Click:Connect(function()
+        spawn(function()
+            if arg3 == true then
+                selectables[DropdownChoice] = not selectables[DropdownChoice]
+                arg4(atext,selectables[DropdownChoice])
+                if selectables[DropdownChoice] then
+                    Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
+                    Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
+                else
+                    Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["DarkText"]})
+                    Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                end
+            else
+                for i,v in next,selectables do
+                    if i ~= atext then
+                        selectables[i] = false
+                        Tween(i,0.3,{TextColor3 = Library["theme"]["DarkText"]})
+                        Tween(i.Dot,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                    end
         
                             
                             DropdownChoice.MouseEnter:Connect(function()
