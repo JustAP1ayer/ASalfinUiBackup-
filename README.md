@@ -55,7 +55,7 @@ Slider and Slider2 is different as Slider works after you finish sliding but Sli
 
 Random Color Theme
 
-local rainbowFrequency = 0.75 -- adjust this value to change the speed of the rainbow effect
+local rainbowFrequency = 0.75 
 local tick = tick()
 
 getgenv().LibTheme = {
