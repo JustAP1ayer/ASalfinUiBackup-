@@ -1015,7 +1015,7 @@ end)
                             end)
                         end
     
-                        for i,v in next,arg2 do
+		for i,v in ipairs(arg2) do
                             if v ~= nil then
                                 addchoice(i,v)
                             elseif v == true or v == false then
