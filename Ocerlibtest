@@ -921,7 +921,7 @@ end)
                             SortOrder = Enum.SortOrder.LayoutOrder
                         })
     
-                     local isopened = false
+local isopened = false
 
 Dropdown.MouseButton1Click:Connect(function()
     if isopened then
@@ -936,8 +936,8 @@ Dropdown.MouseButton1Click:Connect(function()
     isopened = not isopened
 end)
 
-local function addchoice(atext , val)
-    local DropdownChoice = make("TextButton",{
+local function addchoice(atext, val)
+    local DropdownChoice = make("TextButton", {
         Parent = SelectablesFrame;
         Name = atext;
         Size = UDim2.new(0.96,0,0,25);
@@ -945,15 +945,14 @@ local function addchoice(atext , val)
         CornerRadius = UDim.new(0,5);
         BackgroundColor3 = Library["theme"]["BrighterMainColor"];
         BackgroundTransparency = 0;
-        Text = "     " .. atext;  
+        Text = atext; -- set the Text property to the choice text
         TextColor3 = Library["theme"]["DarkText"];
         Font = Enum.Font[Library["theme"]["Font"]];
         TextXAlignment = Enum.TextXAlignment.Left;
         TextYAlignment = Enum.TextYAlignment.Center;
-        TextSize = 14;
-        ZIndex = 5;
+        TextSize = 15;
+        ZIndex = 4;
         AutoButtonColor = false;
-        ClipsDescendants = true;
     })
 
     local IsSelected = make("Frame",{
