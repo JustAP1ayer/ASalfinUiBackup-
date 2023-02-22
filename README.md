@@ -52,6 +52,27 @@ Slider and Slider2 is different as Slider works after you finish sliding but Sli
             BrightText = Color3.fromRGB(145,145,145);
             Font = "Gotham";
             SoundVolume = 0.5;
+
+Random Color Theme
+
+local rainbowFrequency = 0.75 -- adjust this value to change the speed of the rainbow effect
+local tick = tick()
+
+getgenv().LibTheme = {
+    MainColor = Color3.fromRGB(35, 35, 40),
+    BrighterMainColor = Color3.fromRGB(40, 40, 45),
+    IconsColor = Color3.fromRGB(100, 100, 120),
+    Accent = Color3.new(math.sin(tick * rainbowFrequency) * 0.5 + 0.5, 
+                        math.sin(tick * rainbowFrequency + 2 * math.pi / 3) * 0.5 + 0.5,
+                        math.sin(tick * rainbowFrequency + 4 * math.pi / 3) * 0.5 + 0.5),
+    DarkText = Color3.fromRGB(170, 170, 170),
+    BrightText = Color3.fromRGB(145, 145, 145),
+    Font = "Gotham",
+    SoundVolume = 0.5,
+    HideKey = "LeftAlt"
+}
+
+
     ]]
     
     
