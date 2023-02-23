@@ -1272,19 +1272,23 @@ end)
     
                         local Mouse = game.Players.LocalPlayer:GetMouse()
     
+local Slider2Value = Slider2:GetValue() -- get the default value of Slider2
+
 local function UpdateSlider2(val)
     local percent = (Mouse.X - Slider2Progress.AbsolutePosition.X) / Slider2Progress.AbsoluteSize.X
 
-    if val ~= nil then
+    if val then
         percent = (val - arg2) / (arg3 - arg2)
     else
-        percent = (arg6 - arg2) / (arg3 - arg2)
+        percent = (Slider2Value - arg2) / (arg3 - arg2) -- set the slider position to the default value
     end
 
     percent = math.clamp(percent, 0, 1)
 
-    Slider2Progress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
+    Slider2Progress:TweenSize(UDim2.new(percent, 0, 1, 0), "Out", "Sine", 0.3, true)
 end
+
+UpdateSlider2() -- call the function to set the default position of the slider
     
                         Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
                         Tween(Slider2Progress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
