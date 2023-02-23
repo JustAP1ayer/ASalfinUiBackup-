@@ -1272,20 +1272,19 @@ end)
     
                         local Mouse = game.Players.LocalPlayer:GetMouse()
     
-local function UpdateSlider2(val)
-    local percent
-    if val then
-        percent = (val - arg2) / (arg3 - arg2)
-    else
-        percent = (Mouse.X - SliderProgress.AbsolutePosition.X) / SliderProgress.AbsoluteSize.X
-    end
+                        local function UpdateSlider2(val)
+                            local percent = (Mouse.X - Slider2Progress.AbsolutePosition.X) / Slider2Progress.AbsoluteSize.X
     
-    percent = math.clamp(percent, 0, 1)
+                            if val then
+                                percent = (val - arg2) / (arg3 - arg2)
+                            end
     
-    SliderProgress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
-end
-
-UpdateSlider2(arg6)
+                            percent = math.clamp(percent, 0, 1)
+    
+                            Slider2Progress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
+                        end
+    
+                        UpdateSlider2(arg6)
     
                         Tween(CircleStroke,0.3,{Color = Library["theme"]["MainColor"]})
                         Tween(Slider2Progress,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
