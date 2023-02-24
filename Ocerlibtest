@@ -944,26 +944,16 @@ local function addchoice(atext , val)
         CornerRadius = UDim.new(0,5);
         BackgroundColor3 = Library["theme"]["BrighterMainColor"];
         BackgroundTransparency = 0;
-        Text = atext; -- set the Text property to the input text
+        Text = atext;  -- Updated line
         TextColor3 = Library["theme"]["DarkText"];
         Font = Enum.Font[Library["theme"]["Font"]];
         TextXAlignment = Enum.TextXAlignment.Left;
         TextYAlignment = Enum.TextYAlignment.Center;
-        TextSize = 15;
-        ZIndex = 4;
+        TextSize = 14;
+        ZIndex = 5;
+        AutoButtonColor = false;
+        ClipsDescendants = true;
     })
-    DropdownChoice.MouseButton1Click:Connect(function()
-        selected = val
-        DropdownLabel.Text = "   " .. atext
-        isopened = false
-        Tween(ArrowIcon,0.5,{Rotation = 90})
-        SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
-        Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
-        callback(selected)
-    end)
-    table.insert(selectables, DropdownChoice)
-    SelectablesList:ApplyLayout()
-    SelectablesFrame.CanvasSize = UDim2.new(0,0,0,SelectablesList.AbsoluteContentSize.Y)
 end
    
                             local IsSelected = make("Frame",{
