@@ -1015,14 +1015,14 @@ end)
                             end)
                         end
     
-for _, v in pairs(arg2) do
-  if v ~= nil then
-    addchoice(v, v)
-  elseif v == true or v == false then
-    addchoice(tostring(v), tostring(v))
-  else
-    addchoice(tostring(v))
-  end
+for i,v in next,arg2 do
+    if v ~= nil then
+       addchoice(v,v)
+    elseif v == true or v == false then
+        addchoice(v,v)
+     else
+         addchoice(i,v)
+     end
 end
 
 
