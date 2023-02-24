@@ -944,7 +944,7 @@ end)
                                 CornerRadius = UDim.new(0,5);
                                 BackgroundColor3 = Library["theme"]["BrighterMainColor"];
                                 BackgroundTransparency = 0;
-                                Text = "     " .. atext;  
+				Text = atext;
                                 TextColor3 = Library["theme"]["DarkText"];
                                 Font = Enum.Font[Library["theme"]["Font"]];
                                 TextXAlignment = Enum.TextXAlignment.Left;
