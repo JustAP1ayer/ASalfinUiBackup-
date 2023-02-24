@@ -1015,15 +1015,16 @@ end)
                             end)
                         end
     
-for i,v in next,arg2 do
-    if i ~= nil then
-        addchoice(v,v)
-    elseif i == true or i == false then
-        addchoice(v,v)
-    else
-        addchoice(v)
-    end
+for _, v in pairs(arg2) do
+  if v ~= nil then
+    addchoice(v, v)
+  elseif v == true or v == false then
+    addchoice(tostring(v), tostring(v))
+  else
+    addchoice(tostring(v))
+  end
 end
+
 
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
