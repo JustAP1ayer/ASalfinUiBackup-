@@ -1016,9 +1016,9 @@ end)
                         end
     
                         for i,v in next,arg2 do
-                            if v ~= nil then
+                            if i ~= nil then
                                 addchoice(i,v)
-                            elseif v == true or v == false then
+                            elseif i == true or i == false then
                                 addchoice(i,v)
                             else
                                 addchoice(i)
