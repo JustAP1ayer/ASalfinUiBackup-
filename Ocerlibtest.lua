@@ -935,7 +935,7 @@ end)
                             isopened = not isopened
                         end)
     
-                        local function addchoice(atext , val)
+		local function addchoice(atext,val)
                             local DropdownChoice = make("TextButton",{
                                 Parent = SelectablesFrame;
                                 Name = atext;
@@ -944,7 +944,7 @@ end)
                                 CornerRadius = UDim.new(0,5);
                                 BackgroundColor3 = Library["theme"]["BrighterMainColor"];
                                 BackgroundTransparency = 0;
-				Text = atext;
+                                Text = "      " .. atext;  
                                 TextColor3 = Library["theme"]["DarkText"];
                                 Font = Enum.Font[Library["theme"]["Font"]];
                                 TextXAlignment = Enum.TextXAlignment.Left;
@@ -1025,6 +1025,7 @@ end)
                             end
                         end
                     end
+
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
