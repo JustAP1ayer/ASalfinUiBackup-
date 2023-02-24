@@ -1021,10 +1021,9 @@ for i,v in next,arg2 do
     elseif v == true or v == false then
         addchoice(v, i)
     else
-        addchoice(v)
+        addchoice(nil, v)
     end
 end
-
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
