@@ -935,25 +935,33 @@ end)
                             isopened = not isopened
                         end)
     
-                        local function addchoice(atext , val)
-                            local DropdownChoice = make("TextButton",{
-                                Parent = SelectablesFrame;
-                                Name = atext;
-                                Size = UDim2.new(0.96,0,0,25);
-                                BorderSizePixel = 0;
-                                CornerRadius = UDim.new(0,5);
-                                BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                                BackgroundTransparency = 0;
-                                Text = "     " .. atext;  
-                                TextColor3 = Library["theme"]["DarkText"];
-                                Font = Enum.Font[Library["theme"]["Font"]];
-                                TextXAlignment = Enum.TextXAlignment.Left;
-                                TextYAlignment = Enum.TextYAlignment.Center;
-                                TextSize = 14;
-                                ZIndex = 5;
-                                AutoButtonColor = false;
-                                ClipsDescendants = true;
-                            })
+local function addchoice(atext, val)
+    local DropdownChoice = make("TextButton",{
+        Parent = SelectablesFrame;
+        Name = atext;
+        Size = UDim2.new(0.96,0,0,25);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 0;
+        Text = atext; -- set the Text property to atext
+        TextColor3 = Library["theme"]["DarkText"];
+        Font = Enum.Font[Library["theme"]["Font"]];
+        TextXAlignment = Enum.TextXAlignment.Left;
+        TextYAlignment = Enum.TextYAlignment.Center;
+        TextSize = 14;
+        ZIndex = 4;
+    })
+    DropdownChoice.MouseButton1Click:Connect(function()
+        DropdownLabel.Text = "   " .. atext
+        selected = val
+        isopened = false
+        Tween(ArrowIcon,0.5,{Rotation = 90})
+        SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
+        Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
+        pcall(callback,val)
+    end)
+end
     
                             local IsSelected = make("Frame",{
                                 Parent = DropdownChoice;
