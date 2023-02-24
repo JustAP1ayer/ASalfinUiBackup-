@@ -1021,7 +1021,7 @@ end)
                             elseif v == true or v == false then
                                 addchoice(i,v)
                             else
-                                addchoice(v)
+                                addchoice(i)
                             end
                         end
                     end
