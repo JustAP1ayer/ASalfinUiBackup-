@@ -1037,22 +1037,22 @@ end)
                             ZIndex = 2;
                         })
     
-                        local SliderValue = make("TextLabel",{
-                            Parent = Slider;
-                            Name = arg1;
-                            Size = UDim2.new(1,0,0,15);
-                            BorderSizePixel = 0;
-                            CornerRadius = UDim.new(0,5);
-                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                            BackgroundTransparency = 1;
-                            Text = arg6 .. " ";
-                            TextColor3 = Library["theme"]["BrightText"];
-                            Font = Enum.Font[Library["theme"]["Font"]];
-                            TextXAlignment = Enum.TextXAlignment.Right;
-                            TextYAlignment = Enum.TextYAlignment.Center;
-                            TextSize = 15;
-                            ZIndex = 2;
-                        })
+local SliderValue = make("TextLabel",{
+    Parent = Slider;
+    Name = arg1;
+    Size = UDim2.new(1,0,0,15);
+    BorderSizePixel = 0;
+    CornerRadius = UDim.new(0,5);
+    BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+    BackgroundTransparency = 1;
+    Text = tostring(arg6) .. " "; 
+    TextColor3 = Library["theme"]["BrightText"];
+    Font = Enum.Font[Library["theme"]["Font"]];
+    TextXAlignment = Enum.TextXAlignment.Right;
+    TextYAlignment = Enum.TextYAlignment.Center;
+    TextSize = 15;
+    ZIndex = 2;
+})
     
                         local SliderCore = make("Frame",{
                             Parent = Slider;
