@@ -101,7 +101,7 @@ local Toggle = Section.Component("Toggle","Toggle Name",function(bool)
   -- Code
 end,false)
 
-local Dropdown = Section.Component("Dropdown","Dropdown Name",table,false,function(string,bool)
+local Dropdown = Section.Component("Dropdown","Dropdown Name",{"joe","banana","yes"},false,function(string,bool)
 
 end,false)
 
