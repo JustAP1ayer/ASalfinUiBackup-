@@ -824,206 +824,201 @@ end)
                         end)
                     end
                     if component == "Dropdown" then
-                        local selectables = {}
-                        local selected
-                        local Dropdown = make("TextButton",{
-                            Parent = Section;
-                            Name = arg1;
-                            Size = UDim2.new(0.96,0,0,40);
-                            BorderSizePixel = 0;
-                            CornerRadius = UDim.new(0,5);
-                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                            BackgroundTransparency = 0;
-                            Text = "";
-                            TextColor3 = Library["theme"]["BrightText"];
-                            Font = Enum.Font[Library["theme"]["Font"]];
-                            TextXAlignment = Enum.TextXAlignment.Left;
-                            TextYAlignment = Enum.TextYAlignment.Center;
-                            TextSize = 18;
-                            ZIndex = 2;
-                            AutoButtonColor = false;
-                        })
-    
-                        local DropdownLabel = make("TextLabel",{
-                            Parent = Dropdown;
-                            Name = "dropdownlabel";
-                            Size = UDim2.new(1,0,0,40);
-                            Position = UDim2.new(0,0,0,0);
-                            BorderSizePixel = 0;
-                            CornerRadius = UDim.new(0,5);
-                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                            BackgroundTransparency = 1;
-                            Text = "   " .. arg1;
-                            TextColor3 = Library["theme"]["DarkText"];
-                            Font = Enum.Font[Library["theme"]["Font"]];
-                            TextXAlignment = Enum.TextXAlignment.Left;
-                            TextYAlignment = Enum.TextYAlignment.Center;
-                            TextSize = 15;
-                            ZIndex = 2;
-                        })
-    
-                        local ArrowIcon = make("ImageLabel",{
-                            Parent = Dropdown;
-                            Name = "ArrowIcon";
-                            AnchorPoint = Vector2.new(0,0);
-                            Size = UDim2.new(0,25,0,25);
-                            Position = UDim2.new(1,-30,0,7);
-                            BorderSizePixel = 0;
-                            BackgroundTransparency = 1;
-                            Image = "rbxassetid://3926305904";
-                            ImageRectOffset = Vector2.new(44, 404);
-                            ImageRectSize = Vector2.new(36, 36);
-                            Rotation = 90;
-                            ImageTransparency = 0;
-                            ImageColor3 = Library["theme"]["IconsColor"];
-                            ScaleType = Enum.ScaleType["Fit"];
-                            ZIndex = 3;
-                        })
-    
-                        local SelectablesFrameVisual = make("Frame",{
-                            Parent = Dropdown;
-                            Name = "Selectables";
-                            AnchorPoint = Vector2.new(0,0);
-                            Position = UDim2.new(0,0,0,35);
-                            Size = UDim2.new(1,0,0,0);
-                            BorderSizePixel = 0;
-                            CornerRadius = UDim.new(0,5);
-                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                            BackgroundTransparency = 0;
-                            ZIndex = 3;
-                            ClipsDescendants = true
-                        })
-    
-                        local SelectablesFrame = make("ScrollingFrame",{
-                            Parent = SelectablesFrameVisual;
-                            Name = "Selectables";
-                            Position = UDim2.new(0,0,0,0);
-                            Size = UDim2.new(1,0,1,-5);
-                            BorderSizePixel = 0;
-                            CornerRadius = UDim.new(0,5);
-                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                            BackgroundTransparency = 1;
-                            ZIndex = 3;
-                            ScrollBarImageTransparency = 0.5;
-                            ScrollBarImageColor3 = Library["theme"]["Accent"];
-                            ScrollBarThickness = 4;
-                            CanvasSize = UDim2.new(0,0,0,0);
-                            AutomaticCanvasSize = Enum.AutomaticSize.Y;
-                        })
-    
-                        local SelectablesList = make("UIListLayout",{
-                            Parent = SelectablesFrame;
-                            Name = "UIList";
-                            Padding = UDim.new(0,5);
-                            FillDirection = Enum.FillDirection.Vertical;
-                            HorizontalAlignment = Enum.HorizontalAlignment.Center;
-                            VerticalAlignment = Enum.VerticalAlignment.Top;
-                            SortOrder = Enum.SortOrder.LayoutOrder
-                        })
-    
-                        local isopened = false
-                        Dropdown.MouseButton1Click:Connect(function()
-                            if isopened then
-                                Tween(ArrowIcon,0.5,{Rotation = 90})
-                                SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
-                                Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
-                            else
-                                Tween(ArrowIcon,0.5,{Rotation = 180})
-                                SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,100),"Out","Quart",0.5,true)
-                                Dropdown:TweenSize(UDim2.new(0.96,0,0,140),"Out","Quart",0.5,true)
-                            end
-                            isopened = not isopened
-                        end)
-    
-                        local function addchoice(atext , val)
-                            local DropdownChoice = make("TextButton",{
-                                Parent = SelectablesFrame;
-                                Name = atext;
-                                Size = UDim2.new(0.96,0,0,25);
-                                BorderSizePixel = 0;
-                                CornerRadius = UDim.new(0,5);
-                                BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-                                BackgroundTransparency = 0;
-                                Text = "     " .. atext;  
-                                TextColor3 = Library["theme"]["DarkText"];
-                                Font = Enum.Font[Library["theme"]["Font"]];
-                                TextXAlignment = Enum.TextXAlignment.Left;
-                                TextYAlignment = Enum.TextYAlignment.Center;
-                                TextSize = 14;
-                                ZIndex = 5;
-                                AutoButtonColor = false;
-                                ClipsDescendants = true;
-                            })
-    
-                            local IsSelected = make("Frame",{
-                                Parent = DropdownChoice;
-                                Name = "Dot";
-                                AnchorPoint = Vector2.new(0,0.5);
-                                Position = UDim2.new(0,5,0.5,0);
-                                Size = UDim2.new(0,10,0,10);
-                                BorderSizePixel = 0;
-                                CornerRadius = UDim.new(0,5000);
-                                BackgroundColor3 = Library["theme"]["MainColor"];
-                                BackgroundTransparency = 0;
-                                ZIndex = 5;
-                            })
-    
-                            selectables[DropdownChoice] = val == true or false
-                            if selectables[DropdownChoice] then
-                                IsSelected.BackgroundColor3 = Library["theme"]["Accent"];
-                            end
-        
-                            local mouseEnter = false
-        
-                            DropdownChoice.MouseButton1Click:Connect(function()
-                                spawn(function()
-                                    if arg3 == true then
-                                        selectables[DropdownChoice] = not selectables[DropdownChoice]
-                                        arg4(atext,selectables[DropdownChoice])
-                                        if selectables[DropdownChoice] then
-                                            Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
-                                            Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
-                                        else
-                                            Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["DarkText"]})
-                                            Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
-                                        end
-                                    else
-                                        for i,v in next,selectables do
-                                            if i ~= atext then
-                                                selectables[i] = false
-                                                Tween(i,0.3,{TextColor3 = Library["theme"]["DarkText"]})
-                                                Tween(i.Dot,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
-                                            end
-                                        end
-                                        selectables[DropdownChoice] = true
-                                        arg4(atext,val)
-                                        Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
-                                        Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
-                                    end
-                                end)
-                            end)
-        
-                            
-                            DropdownChoice.MouseEnter:Connect(function()
-                                Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
-                            end)
-        
-                            DropdownChoice.MouseLeave:Connect(function()
-                                if not selectables[DropdownChoice] then
-                                    Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["BrightText"]})
-                                end
-                            end)
+    local selectables = {}
+    local selected
+    local Dropdown = make("TextButton",{
+        Parent = Section;
+        Name = arg1;
+        Size = UDim2.new(0.96,0,0,40);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 0;
+        Text = "";
+        TextColor3 = Library["theme"]["BrightText"];
+        Font = Enum.Font[Library["theme"]["Font"]];
+        TextXAlignment = Enum.TextXAlignment.Left;
+        TextYAlignment = Enum.TextYAlignment.Center;
+        TextSize = 18;
+        ZIndex = 2;
+        AutoButtonColor = false;
+    })
+
+    local DropdownLabel = make("TextLabel",{
+        Parent = Dropdown;
+        Name = "dropdownlabel";
+        Size = UDim2.new(1,0,0,40);
+        Position = UDim2.new(0,0,0,0);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 1;
+        Text = "   " .. arg1;
+        TextColor3 = Library["theme"]["DarkText"];
+        Font = Enum.Font[Library["theme"]["Font"]];
+        TextXAlignment = Enum.TextXAlignment.Left;
+        TextYAlignment = Enum.TextYAlignment.Center;
+        TextSize = 15;
+        ZIndex = 2;
+    })
+
+    local ArrowIcon = make("ImageLabel",{
+        Parent = Dropdown;
+        Name = "ArrowIcon";
+        AnchorPoint = Vector2.new(0,0);
+        Size = UDim2.new(0,25,0,25);
+        Position = UDim2.new(1,-30,0,7);
+        BorderSizePixel = 0;
+        BackgroundTransparency = 1;
+        Image = "rbxassetid://3926305904";
+        ImageRectOffset = Vector2.new(44, 404);
+        ImageRectSize = Vector2.new(36, 36);
+        Rotation = 90;
+        ImageTransparency = 0;
+        ImageColor3 = Library["theme"]["IconsColor"];
+        ScaleType = Enum.ScaleType["Fit"];
+        ZIndex = 3;
+    })
+
+    local SelectablesFrameVisual = make("Frame",{
+        Parent = Dropdown;
+        Name = "Selectables";
+        AnchorPoint = Vector2.new(0,0);
+        Position = UDim2.new(0,0,0,35);
+        Size = UDim2.new(1,0,0,0);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 0;
+        ZIndex = 3;
+        ClipsDescendants = true
+    })
+
+    local SelectablesFrame = make("ScrollingFrame",{
+        Parent = SelectablesFrameVisual;
+        Name = "Selectables";
+        Position = UDim2.new(0,0,0,0);
+        Size = UDim2.new(1,0,1,-5);
+        BorderSizePixel = 0;
+        CornerRadius = UDim.new(0,5);
+        BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+        BackgroundTransparency = 1;
+        ZIndex = 3;
+        ScrollBarImageTransparency = 0.5;
+        ScrollBarImageColor3 = Library["theme"]["Accent"];
+        ScrollBarThickness = 4;
+        CanvasSize = UDim2.new(0,0,0,0);
+        AutomaticCanvasSize = Enum.AutomaticSize.Y;
+    })
+
+    local SelectablesList = make("UIListLayout",{
+        Parent = SelectablesFrame;
+        Name = "UIList";
+        Padding = UDim.new(0,5);
+        FillDirection = Enum.FillDirection.Vertical;
+        HorizontalAlignment = Enum.HorizontalAlignment.Center;
+        VerticalAlignment = Enum.VerticalAlignment.Top;
+        SortOrder = Enum.SortOrder.LayoutOrder
+    })
+
+    local isopened = false
+    Dropdown.MouseButton1Click:Connect(function()
+        if isopened then
+            Tween(ArrowIcon,0.5,{Rotation = 90})
+            SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.5,true)
+            Dropdown:TweenSize(UDim2.new(0.96,0,0,40),"Out","Quart",0.5,true)
+        else
+            Tween(ArrowIcon,0.5,{Rotation = 180})
+            SelectablesFrameVisual:TweenSize(UDim2.new(1,0,0,100),"Out","Quart",0.5,true)
+            Dropdown:TweenSize(UDim2.new(0.96,0,0,140),"Out","Quart",0.5,true)
+        end
+        isopened = not isopened
+    end)
+
+    local function addchoice(val)
+        local DropdownChoice = make("TextButton",{
+            Parent = SelectablesFrame;
+            Name = val;
+            Size = UDim2.new(0.96,0,0,25);
+            BorderSizePixel = 0;
+            CornerRadius = UDim.new(0,5);
+            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+            BackgroundTransparency = 0;
+            Text = "     " .. val;
+            TextColor3 = Library["theme"]["DarkText"];
+            Font = Enum.Font[Library["theme"]["Font"]];
+            TextXAlignment = Enum.TextXAlignment.Left;
+            TextYAlignment = Enum.TextYAlignment.Center;
+            TextSize = 14;
+            ZIndex = 5;
+            AutoButtonColor = false;
+            ClipsDescendants = true;
+        })
+
+        local IsSelected = make("Frame",{
+            Parent = DropdownChoice;
+            Name = "Dot";
+            AnchorPoint = Vector2.new(0,0.5);
+            Position = UDim2.new(0,5,0.5,0);
+            Size = UDim2.new(0,10,0,10);
+            BorderSizePixel = 0;
+            CornerRadius = UDim.new(0,5000);
+            BackgroundColor3 = Library["theme"]["MainColor"];
+            BackgroundTransparency = 0;
+            ZIndex = 5;
+        })
+
+        selectables[DropdownChoice] = val == true or false
+        if selectables[DropdownChoice] then
+            IsSelected.BackgroundColor3 = Library["theme"]["Accent"];
+        end
+
+        local mouseEnter = false
+
+        DropdownChoice.MouseButton1Click:Connect(function()
+            spawn(function()
+                if arg3 == true then
+                    selectables[DropdownChoice] = not selectables[DropdownChoice]
+                    arg4(selectables[DropdownChoice])
+                    if selectables[DropdownChoice] then
+                        Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
+                        Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
+                    else
+                        Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["DarkText"]})
+                        Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
+                    end
+                else
+                    for i, v in next, selectables do
+                        if i ~= DropdownChoice then
+                            selectables[i] = false
+                            Tween(i,0.3,{TextColor3 = Library["theme"]["DarkText"]})
+                            Tween(i.Dot,0.3,{BackgroundColor3 = Library["theme"]["MainColor"]})
                         end
-    
-for i,v in next,arg2 do
-    if v ~= nil then
-       addchoice(i,v)
-    elseif v == true or v == false then
-        addchoice(i,v)
-     else
-         addchoice(v)
-     end
- end
+                    end
+                    selectables[DropdownChoice] = true
+                    arg4(val)
+                    Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
+                    Tween(IsSelected,0.3,{BackgroundColor3 = Library["theme"]["Accent"]})
+                end
+            end)
+        end)
+
+
+        DropdownChoice.MouseEnter:Connect(function()
+            Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["Accent"]})
+        end)
+
+        DropdownChoice.MouseLeave:Connect(function()
+            if not selectables[DropdownChoice] then
+                Tween(DropdownChoice,0.3,{TextColor3 = Library["theme"]["BrightText"]})
+            end
+        end)
+    end
+
+    for i, v in next, arg2 do
+        addchoice(v)
+    end
+end
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
