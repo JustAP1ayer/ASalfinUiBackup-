@@ -74,8 +74,9 @@ getgenv().LibTheme = {
 
 
     ]]
+```
     
-    
+ ```lua   
 getgenv().LibTheme = {
     MainColor = Color3.fromRGB(35,35,40);
     BrighterMainColor = Color3.fromRGB(40,40,45);
@@ -125,3 +126,4 @@ local log1 = Logs.LogWithButtons("smh")
 local logbutton = log1.Button("something",function()
 
 end)
+```
