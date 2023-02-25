@@ -1037,22 +1037,22 @@ end)
                             ZIndex = 2;
                         })
     
-local SliderValue = make("TextLabel",{
-    Parent = Slider;
-    Name = arg1;
-    Size = UDim2.new(1,0,0,15);
-    BorderSizePixel = 0;
-    CornerRadius = UDim.new(0,5);
-    BackgroundColor3 = Library["theme"]["BrighterMainColor"];
-    BackgroundTransparency = 1;
-    Text = tostring(arg6) .. " "; 
-    TextColor3 = Library["theme"]["BrightText"];
-    Font = Enum.Font[Library["theme"]["Font"]];
-    TextXAlignment = Enum.TextXAlignment.Right;
-    TextYAlignment = Enum.TextYAlignment.Center;
-    TextSize = 15;
-    ZIndex = 2;
-})
+                        local SliderValue = make("TextLabel",{
+                            Parent = Slider;
+                            Name = arg1;
+                            Size = UDim2.new(1,0,0,15);
+                            BorderSizePixel = 0;
+                            CornerRadius = UDim.new(0,5);
+                            BackgroundColor3 = Library["theme"]["BrighterMainColor"];
+                            BackgroundTransparency = 1;
+                            Text = arg6 .. " ";
+                            TextColor3 = Library["theme"]["BrightText"];
+                            Font = Enum.Font[Library["theme"]["Font"]];
+                            TextXAlignment = Enum.TextXAlignment.Right;
+                            TextYAlignment = Enum.TextYAlignment.Center;
+                            TextSize = 15;
+                            ZIndex = 2;
+                        })
     
                         local SliderCore = make("Frame",{
                             Parent = Slider;
@@ -1102,17 +1102,14 @@ local SliderValue = make("TextLabel",{
     
                         local Mouse = game.Players.LocalPlayer:GetMouse()
     
-                        local function UpdateSlider(val)
-                            local percent = (Mouse.X - SliderProgress.AbsolutePosition.X) / SliderProgress.AbsoluteSize.X
-    
-                            if val then
-                                percent = (val - arg2) / (arg3 - arg2)
-                            end
-    
-                            percent = math.clamp(percent, 0, 1)
-    
-                            SliderProgress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
-                        end
+local function UpdateSlider(val)
+    local percent = ((val or arg6) - arg2) / (arg3 - arg2)
+    percent = math.clamp(percent, 0, 1)
+    SliderProgress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
+    RealValue = val or arg6
+    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+    SliderValue.Text = tostring(value) .. " "
+end
     
                         UpdateSlider(arg6)
     
@@ -1123,24 +1120,28 @@ local SliderValue = make("TextLabel",{
                         local IsSliding,Dragging = false
                         local RealValue = arg6
                         local value
-                        local function move(Pressed)
-                            IsSliding = true;
-                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
-                            RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
-                            value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-                            SliderValue.Text = tostring(value) .. " "
-                            arg5(value)
-                        end
+local function move(Pressed)
+    IsSliding = true;
+    local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+    local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+    SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+    RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
+    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+    SliderValue.Text = tostring(value) .. " "
+    arg5(value)
+end
 
-                        local function move2(Pressed)
-                            IsSliding = true;
-                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
-                        end
-    
+local function move2(Pressed)
+    IsSliding = true;
+    local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+    local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+    SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+    RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
+    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+    SliderValue.Text = tostring(value) .. " "
+    arg5(value)
+end
+				
                         -- this slider script i just skidded 2 years ago, im still using it
     
     
