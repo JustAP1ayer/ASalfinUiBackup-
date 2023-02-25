@@ -1102,14 +1102,17 @@ end)
     
                         local Mouse = game.Players.LocalPlayer:GetMouse()
     
-local function UpdateSlider(val)
-    local percent = ((val or arg6) - arg2) / (arg3 - arg2)
-    percent = math.clamp(percent, 0, 1)
-    SliderProgress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
-    RealValue = val or arg6
-    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-    SliderValue.Text = tostring(value) .. " "
-end
+                        local function UpdateSlider(val)
+                            local percent = (Mouse.X - SliderProgress.AbsolutePosition.X) / SliderProgress.AbsoluteSize.X
+    
+                            if val then
+                                percent = (val - arg2) / (arg3 - arg2)
+                            end
+    
+                            percent = math.clamp(percent, 0, 1)
+    
+                            SliderProgress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",0.3,true)
+                        end
     
                         UpdateSlider(arg6)
     
@@ -1120,28 +1123,24 @@ end
                         local IsSliding,Dragging = false
                         local RealValue = arg6
                         local value
-local function move(Pressed)
-    IsSliding = true;
-    local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-    local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-    SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
-    RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
-    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-    SliderValue.Text = tostring(value) .. " "
-    arg5(value)
-end
+                        local function move(Pressed)
+                            IsSliding = true;
+                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+                            RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
+                            value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                            SliderValue.Text = tostring(value) .. " "
+                            arg5(value)
+                        end
 
-local function move2(Pressed)
-    IsSliding = true;
-    local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-    local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
-    SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
-    RealValue = (((pos.X.Scale * arg3) / arg3) * (arg3 - arg2) + arg2)
-    value = (arg4 and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-    SliderValue.Text = tostring(value) .. " "
-    arg5(value)
-end
-				
+                        local function move2(Pressed)
+                            IsSliding = true;
+                            local pos = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            local size = UDim2.new(math.clamp((Pressed.Position.X - SliderCore.AbsolutePosition.X) / SliderCore.AbsoluteSize.X, 0, 1), 0, 1, 0)
+                            SliderProgress:TweenSize(size, "Out", "Quart", 0.2,true);
+                        end
+    
                         -- this slider script i just skidded 2 years ago, im still using it
     
     
