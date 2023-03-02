@@ -423,36 +423,44 @@ end)
     
         local opened = true
     
-        game:GetService("UserInputService").InputBegan:Connect(function(key,istyping)
-            if key.KeyCode == Enum.KeyCode[Library["theme"]["HideKey"]] and not istyping then
-                if opened then
-                    Main:TweenSize(UDim2.new(0,x / 1.1,0,y / 1.1),"Out","Quart",0.6,true)
-                    for c,x in next,allproperties do
-                        for b,n in next,allproperties[c] do
-                            if tostring(b) == "TextTransparency" then
-                                Tween(c,0.2,{[b] = 1})
-                            else
-                                Tween(c,0.5,{[b] = 1})
-                            end
-                        end
-                    end
-                else
-                    OnEffect:Play() 
-                    Main:TweenSize(UDim2.new(0,x,0,y),"Out","Quart",0.6,true)
-                    for c,x in next,allproperties do
-                        for b,n in next,allproperties[c] do
-                            Main.Visible = true
-                            if tostring(b) == "TextTransparency" then
-                                Tween(c,0.8,{[b] = n})
-                            else
-                                Tween(c,0.5,{[b] = n})
-                            end
-                        end
+       game:GetService("UserInputService").InputBegan:Connect(function(key, istyping)
+    if key.KeyCode == Enum.KeyCode[Library["theme"]["HideKey"]] and not istyping then
+        if opened then
+            Main:TweenSize(UDim2.new(0, x / 1.1, 0, y / 1.1), "Out", "Quart", 0.6, true)
+            for c, x in next, allproperties do
+                for b, n in next, allproperties[c] do
+                    if tostring(b) == "TextTransparency" then
+                        Tween(c, 0.2, {
+                            [b] = 1
+                        })
+                    else
+                        Tween(c, 0.5, {
+                            [b] = 1
+                        })
                     end
                 end
-                opened = not opened
             end
-        end)
+        else
+            OnEffect:Play()
+            Main:TweenSize(UDim2.new(0, x, 0, y), "Out", "Quart", 0.6, true)
+            for c, x in next, allproperties do
+                for b, n in next, allproperties[c] do
+                    Main.Visible = true
+                    if tostring(b) == "TextTransparency" then
+                        Tween(c, 0.8, {
+                            [b] = n
+                        })
+                    else
+                        Tween(c, 0.5, {
+                            [b] = n
+                        })
+                    end
+                end
+            end
+        end
+        opened = not opened
+    end
+end)
         local pagebuttonstable = {}
         function inmain.Page(text ,iconid , rectOffset, rectSize,scaletype)
             local inpage = {}
