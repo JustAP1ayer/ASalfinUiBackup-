@@ -1027,6 +1027,27 @@ end)
   			  addchoice(v)
    			 end
 		      end
+				
+			if component == "TextBox" then
+			local TextBox = Instance.new("TextBox")
+				TextBox.Parent = Frame_2
+				TextBox.Size = UDim2.new(0.96,0,0,40)
+				TextBox.BorderSizePixel = 0
+				TextBox.CornerRadius = UDim.new(0,5)
+				TextBox.BackgroundColor3 = Library["theme"]["BrighterMainColor"]
+				TextBox.BackgroundTransparency = 0
+				TextBox.TextColor3 = Library["theme"]["BrightText"]
+				TextBox.Font = Enum.Font[Library["theme"]["Font"]]
+				TextBox.TextXAlignment = Enum.TextXAlignment.Left
+				TextBox.TextYAlignment = Enum.TextYAlignment.Top
+				TextBox.TextSize = 15
+				TextBox.ZIndex = 2
+            if callback then
+                TextBox.FocusLost:Connect(function()
+                    callback(TextBox.Text)
+                end)
+            end
+        end
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
