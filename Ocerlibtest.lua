@@ -1029,24 +1029,29 @@ end)
 		      end
 				
 if component == "TextBox" then
-    local TextBoxGui = TextBox()
-    TextBoxGui.Parent = Frame_2
-    TextBoxGui.Size = UDim2.new(0.96, 0, 0, 40)
-    TextBoxGui.BorderSizePixel = 0
-    TextBoxGui.CornerRadius = UDim.new(0, 5)
-    TextBoxGui.BackgroundColor3 = Library["theme"]["BrighterMainColor"]
-    TextBoxGui.BackgroundTransparency = 0
-    TextBoxGui.TextColor3 = Library["theme"]["BrightText"]
-    TextBoxGui.Font = Enum.Font[Library["theme"]["Font"]]
-    TextBoxGui.TextXAlignment = Enum.TextXAlignment.Left
-    TextBoxGui.TextYAlignment = Enum.TextYAlignment.Top
-    TextBoxGui.TextSize = 15
-    TextBoxGui.ZIndex = 2
+local TextBox = Instance.new("TextBox")
+
     
-    TextBoxGui.Button.MouseButton1Click:Connect(function()
-        TextBoxGui.Callback(TextBoxGui.TextBox.Text)
-    end)
-end
+    TextBox.Parent = Frame_2
+    TextBox.Size = UDim2.new(0.96, 0, 0, 40)
+    TextBox.BorderSizePixel = 0
+    TextBox.CornerRadius = UDim.new(0, 5)
+    TextBox.BackgroundColor3 = Library["theme"]["BrighterMainColor"]
+    TextBox.BackgroundTransparency = 0
+    TextBox.TextColor3 = Library["theme"]["BrightText"]
+    TextBox.Font = Enum.Font[Library["theme"]["Font"]]
+    TextBox.TextXAlignment = Enum.TextXAlignment.Left
+    TextBox.TextYAlignment = Enum.TextYAlignment.Top
+    TextBox.TextSize = 15
+    TextBox.ZIndex = 2
+    TextBox.Text = ""
+    TextBox.ClipsDescendants = true
+
+    if callback then
+        TextBoxGui.FocusLost:Connect(function()
+            callback(TextBoxGui.Text)
+        end)
+    end
                                         if component == "Slider" then
                         local Slider = make("TextLabel",{
                             Parent = Section;
