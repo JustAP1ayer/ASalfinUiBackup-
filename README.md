@@ -2,7 +2,7 @@
 
 Slider and Slider2 is different as Slider works after you finish sliding but Slider2 is a calling script, which it would always update when sliding
 
-
+## Themes
 ```lua
 
     --[[
@@ -75,7 +75,8 @@ getgenv().LibTheme = {
 
     ]]
 ```
-    
+  ## Document
+  
  ```lua  
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/OcerLibBACKUP.lua"))()
@@ -116,9 +117,9 @@ local logbutton = log1.Button("something",function()
 
 end)
 ```
+  ## Example
 
  ```lua  
--- example
 getgenv().LibTheme = {
 MainColor = Color3.fromRGB(35,30,30);
             BrighterMainColor = Color3.fromRGB(40,35,35);
