@@ -92,7 +92,7 @@ local Toggle = Section.Component("Toggle","Toggle Name",function(bool)
 end,false)
 
 local Dropdown = Section.Component("Dropdown","Dropdown Name",{"choice1","choice2","choice3"},false,function(string,bool)
-
+-- Code
 end,false)
 
 local Slider = Section.Component("Slider","Slider Name",0,100,false,function(value)
@@ -114,7 +114,7 @@ local Logs = Main.Logs("Logs name")
 local log1 = Logs.LogWithButtons("smh")
 
 local logbutton = log1.Button("something",function()
-
+-- Code
 end)
 ```
   ## Example
