@@ -231,7 +231,7 @@ end)
             Thickness = 1;
         })
     
-        function inmain.Loader()
+        local function inmain.Loader()
             local HideWindow = make("Frame",{
                 Parent = Main;
                 Name = "HideWindow";
