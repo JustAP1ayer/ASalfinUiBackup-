@@ -1,5 +1,5 @@
-local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/x0581/Iris-Exploit-Bundle/main/bundle.lua"))().Init(game.CoreGui)
-local MD5 = loadstring(game:HttpGet("https://raw.githubusercontent.com/kikito/md5.lua/master/md5.lua"))()
+local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ignorewtffxd/main/bundle.lua"))().Init(game.CoreGui)
+local MD5 = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ignorewtffxd/main/md5.lua"))()
 
 local LINKVERTISE_ID = 611550
 
