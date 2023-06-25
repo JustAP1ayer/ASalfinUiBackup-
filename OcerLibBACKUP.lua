@@ -9,7 +9,7 @@ local API_HOST = "linkvertise.thisisusedfornothingotherthantohostafewscripts.xyz
 
 local Solved = Iris.State(false)
 local Continue = Iris.State(DONT_RENDER_CONFIRMATION_WINDOW)
-local SupportTheCreator = Iris.State(true)
+local SupportTheCreator = Iris.State(false)
 local LearnMore = Iris.State(false)
 
 local TaskID = "NONE"
