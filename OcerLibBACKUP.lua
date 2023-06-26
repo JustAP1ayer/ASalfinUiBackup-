@@ -41,9 +41,10 @@ if DONT_RENDER_CONFIRMATION_WINDOW then
 end
 
 local function RenderMainWindow()
-    Iris.Window({"Mike Cash - Support The Creator", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(450, 100))}) do
+    Iris.Window({"Mike Cash - Support The Creator", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(450, 125))}) do
         Iris.Text({("Task ID: %s"):format(TaskID)})
         Iris.Text({("Task Expires In: %s second(s)"):format(tostring(ExpireIn))})
+	Iris.Text({("You Must Finish the Linkvertise or it won't work")})
         -- Iris.Text({("API Version: %s"):format(APIVersion)})
         -- Iris.Text({("Host: %s"):format(API_HOST)})
 
