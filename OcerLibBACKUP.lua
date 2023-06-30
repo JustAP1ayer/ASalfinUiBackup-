@@ -60,7 +60,7 @@ local function RenderMainWindow()
             if Iris.Button({"Copy Website"}).clicked then
                 setclipboard(("https://%s/tasks/begin/%s"):format(API_HOST, TaskID))
             end
-	if Iris.Button({"Skip it"}).clicked then
+	if Iris.Button({"Skip"}).clicked then
         Solved.value = true
             end
             if Iris.Button({"Learn More"}).clicked then
