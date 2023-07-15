@@ -41,7 +41,7 @@ if DONT_RENDER_CONFIRMATION_WINDOW then
 end
 
 local function RenderMainWindow()
-    Iris.Window({"Mike Cash - Support The Creator", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(450, 125))}) do
+    Iris.Window({"PlayerHub", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(450, 125))}) do
         Iris.Text({("Task ID: %s"):format(TaskID)})
         Iris.Text({("Task Expires In: %s second(s)"):format(tostring(ExpireIn))})
 	Iris.Text({("You Must Finish the Linkvertise or it won't work")})
@@ -75,7 +75,7 @@ end
 local function RenderConfirmation()
     local Loading = Iris.State(false)
 
-    Iris.Window({"Mike Cash - Support The Creator", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(300, 75))}) do
+    Iris.Window({"PlayerHub", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(300, 75))}) do
         if not Continue.value then
             Iris.Checkbox({"I wish to support the creator."}, {isChecked = SupportTheCreator})
             Iris.SameLine() do
@@ -103,10 +103,10 @@ local function RenderConfirmation()
 end
 
 local function RenderLearnMore()
-    Iris.Window({"Mike Cash - Support The Creator", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(600, 275))}) do
-        Iris.Text({"Mike Cash is created to let script creators easily monetize their script"})
-        Iris.Text({"without them having to pay for some sort of a license or hosting so they"})
-        Iris.Text({"can host their own \"Key System\" of some sorts."})
+    Iris.Window({"PlayerHub", [Iris.Args.Window.NoClose] = true, [Iris.Args.Window.NoResize] = true, [Iris.Args.Window.NoScrollbar] = true, [Iris.Args.Window.NoCollapse] = true}, {size = Iris.State(Vector2.new(600, 275))}) do
+        Iris.Text({"Mike Cash is created to let script creators (like PlayerHub) easily monetize"})
+        Iris.Text({"their script without them having to pay for some sort of a license or hosting"})
+        Iris.Text({"so they can host their own \"Key System\" of some sorts."})
         Iris.Text({""})
         Iris.Text({"Mike Cash does not use keys, instead it uses Task IDs, which allow us"})
         Iris.Text({"to identify if you have visited or have not visited the linkvertise yet."})
