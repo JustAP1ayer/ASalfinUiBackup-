@@ -1,4 +1,4 @@
-local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ignorewtffxd/main/bundle.lua"))().Init(game.CoreGui)
+--[[local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ignorewtffxd/main/bundle.lua"))().Init(game.CoreGui)
 local MD5 = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ignorewtffxd/main/md5.lua"))()
 
 local LINKVERTISE_ID = 611550
@@ -150,6 +150,7 @@ pcall(function()
 end)
 
 repeat task.wait() until Solved.value
+--]]
 leaf = true
 local maker = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/RU9U8JIT9IUJE.lua"))();
     local make = maker.Instance
