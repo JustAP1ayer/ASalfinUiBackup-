@@ -1798,7 +1798,7 @@ function Library.Main(text)
 
                     local TextboxActual = make("TextBox", {
                         AnchorPoint = Vector2.new(1, 0.5),
-                        BackgroundColor3 = Color3.fromRGB(36, 36, 36),
+                        BackgroundColor3 = Library["theme"]["BrighterMainColor"],
                         Position = UDim2.new(1, -10, 0.5, 0),
                         Size = UDim2.new(0, 20, 0, 20),
                         TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -1821,7 +1821,7 @@ function Library.Main(text)
     
                     TextboxActual.FocusLost:Connect(function()
                         arg4(TextboxActual.Text)
-                        if arg3.TextDisappear then
+                        if arg3 then
                             TextboxActual.Text = ""
                         end	
                     end)
