@@ -391,7 +391,10 @@ function Library.Main(text)
 		Thickness = 1,
 	})
 
-	function inmain.Loader()
+	function inmain.Loader(time)
+	if time == nil then
+		time = 4.2
+	end
 		local HideWindow = make("Frame", {
 			Parent = Main,
 			Name = "HideWindow",
@@ -475,7 +478,7 @@ function Library.Main(text)
 						end
 					end)
 					spawn(function()
-						wait(4.2)
+						wait(time)
 						AnimationEnd = true
 					end)
 					if AnimationEnd then
