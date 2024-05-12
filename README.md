@@ -86,7 +86,7 @@ getgenv().LibTheme = {
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/ocerlibbackupnopopup.lua"))()
 
 local Main = Library.Main("Ocerlib")
-Main.Loader() -- loads
+Main.Loader() -- loads,1 arg for how long it is
 local Page = Main.Page("Page","3926305904",Vector2.new(924, 204),Vector2.new(36, 36))
 
 local Section = Page.Section("Section")
@@ -106,7 +106,9 @@ end,50)
 local Slider2 = Section.Component("Slider2","Slider Name",0,100,false,function(value)
 -- Code
 end,50)
-
+Section.Component("TextBox","Title","Text In Box",false,function(value) -- boolean is textdisappear
+print(value)
+end)
 local Button = Section.Component("Button","Button Name",function()
 -- Code
 end)
@@ -167,7 +169,7 @@ end)
 
 end)
 Section.Component("TextBox","Title","Text In Box",false,function(value)
-print(value
+print(value)
 end)
 Section.Component("Card", "Hi guys this is a", "Test")
 
