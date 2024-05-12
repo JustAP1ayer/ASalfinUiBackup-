@@ -1805,7 +1805,7 @@ function Library.Main(text)
                         PlaceholderColor3 = Color3.fromRGB(210,210,210),
                         PlaceholderText = "Write here...",
                         TextXAlignment = Enum.TextXAlignment.Right,
-                        Text = arg1,
+                        Text = arg2,
                         Font = Enum.Font.Gotham,
                         TextSize = 13,
                         ClearTextOnFocus = false,
@@ -1820,8 +1820,8 @@ function Library.Main(text)
                     end)
     
                     TextboxActual.FocusLost:Connect(function()
-                        arg3(TextboxActual.Text)
-                        if arg2.TextDisappear then
+                        arg4(TextboxActual.Text)
+                        if arg3.TextDisappear then
                             TextboxActual.Text = ""
                         end	
                     end)
