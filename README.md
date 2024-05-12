@@ -86,7 +86,7 @@ getgenv().LibTheme = {
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/ocerlibbackupnopopup.lua"))()
 
 local Main = Library.Main("Ocerlib")
-
+Main.Loader() -- loads
 local Page = Main.Page("Page","3926305904",Vector2.new(924, 204),Vector2.new(36, 36))
 
 local Section = Page.Section("Section")
@@ -135,10 +135,10 @@ MainColor = Color3.fromRGB(35,30,30);
    SoundVolume = 1;
    HideKey = "LeftAlt"
 }
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/ocerlibbackupnopopup.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/Ocerlibtest.lua"))()
 
 local Main = Library.Main("Test")
-
+Main.Loader(3) -- seconds
 local Page = Main.Page("Page","3926305904",Vector2.new(924, 204),Vector2.new(36, 36))
 
 local Section = Page.Section("Sextion")
@@ -166,7 +166,9 @@ print("yes")
 end)
 
 end)
-
+Section.Component("TextBox","Title","Text In Box",false,function(value)
+print(value
+end)
 Section.Component("Card", "Hi guys this is a", "Test")
 
 local log1 = Logs.LogWithButtons("nut")
