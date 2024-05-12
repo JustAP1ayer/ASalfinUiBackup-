@@ -1752,7 +1752,7 @@ function Library.Main(text)
 						CornerRadius = UDim.new(0, 5),
 						BackgroundColor3 = Library["theme"]["BrighterMainColor"],
 						BackgroundTransparency = 0,
-						Text = arg1,
+						-- Text = arg1,
 						TextColor3 = Library["theme"]["BrightText"],
 						Font = Enum.Font[Library["theme"]["Font"]],
 						TextXAlignment = Enum.TextXAlignment.Center,
@@ -1761,6 +1761,24 @@ function Library.Main(text)
 						ZIndex = 2,
 						AutoButtonColor = false,
 						ClipsDescendants = true,
+					})
+
+                    make("TextLabel", {
+						Parent = TextboxFrame,
+						Name = "dropdownlabel",
+						Size = UDim2.new(1, 0, 0, 40),
+						Position = UDim2.new(0, 0, 0, 0),
+						BorderSizePixel = 0,
+						CornerRadius = UDim.new(0, 5),
+						BackgroundColor3 = Library["theme"]["BrighterMainColor"],
+						BackgroundTransparency = 1,
+						Text = "   " .. arg1,
+						TextColor3 = Library["theme"]["DarkText"],
+						Font = Enum.Font[Library["theme"]["Font"]],
+						TextXAlignment = Enum.TextXAlignment.Left,
+						TextYAlignment = Enum.TextYAlignment.Center,
+						TextSize = 15,
+						ZIndex = 2,
 					})
 
 					local TextBoxLine = make("Frame", {
@@ -1799,7 +1817,7 @@ function Library.Main(text)
                     end)
     
                     TextboxActual.FocusLost:Connect(function()
-                        arg3.Callback(TextboxActual.Text)
+                        arg3(TextboxActual.Text)
                         if arg2.TextDisappear then
                             TextboxActual.Text = ""
                         end	
