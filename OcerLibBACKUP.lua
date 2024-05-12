@@ -1755,7 +1755,7 @@ function Library.Main(text)
 						CornerRadius = UDim.new(0, 5),
 						BackgroundColor3 = Library["theme"]["BrighterMainColor"],
 						BackgroundTransparency = 0,
-						Text = arg1,
+						Text = "",
 						TextColor3 = Library["theme"]["BrightText"],
 						Font = Enum.Font[Library["theme"]["Font"]],
 						TextXAlignment = Enum.TextXAlignment.Center,
@@ -1764,6 +1764,24 @@ function Library.Main(text)
 						ZIndex = 2,
 						AutoButtonColor = false,
 						ClipsDescendants = true,
+					})
+
+                    make("TextLabel", {
+						Parent = TextboxFrame,
+						Name = "dropdownlabel",
+						Size = UDim2.new(1, 0, 0, 40),
+						Position = UDim2.new(0, 0, 0, 0),
+						BorderSizePixel = 0,
+						CornerRadius = UDim.new(0, 5),
+						BackgroundColor3 = Library["theme"]["BrighterMainColor"],
+						BackgroundTransparency = 1,
+						Text = "   " .. arg1,
+						TextColor3 = Library["theme"]["DarkText"],
+						Font = Enum.Font[Library["theme"]["Font"]],
+						TextXAlignment = Enum.TextXAlignment.Left,
+						TextYAlignment = Enum.TextYAlignment.Center,
+						TextSize = 15,
+						ZIndex = 2,
 					})
 
 					local TextBoxLine = make("Frame", {
@@ -1780,14 +1798,14 @@ function Library.Main(text)
 
                     local TextboxActual = make("TextBox", {
                         AnchorPoint = Vector2.new(1, 0.5),
-                        BackgroundColor3 = Color3.fromRGB(36, 36, 36),
+                        BackgroundColor3 = Library["theme"]["BrighterMainColor"],
                         Position = UDim2.new(1, -10, 0.5, 0),
                         Size = UDim2.new(0, 20, 0, 20),
                         TextColor3 = Color3.fromRGB(255, 255, 255),
                         PlaceholderColor3 = Color3.fromRGB(210,210,210),
                         PlaceholderText = "Write here...",
                         TextXAlignment = Enum.TextXAlignment.Right,
-                        Text = arg1,
+                        Text = arg2,
                         Font = Enum.Font.Gotham,
                         TextSize = 13,
                         ClearTextOnFocus = false,
@@ -1802,8 +1820,8 @@ function Library.Main(text)
                     end)
     
                     TextboxActual.FocusLost:Connect(function()
-                        arg3.Callback(TextboxActual.Text)
-                        if arg2.TextDisappear then
+                        arg4(TextboxActual.Text)
+                        if arg3 then
                             TextboxActual.Text = ""
                         end	
                     end)
