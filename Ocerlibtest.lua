@@ -1755,7 +1755,7 @@ function Library.Main(text)
 						CornerRadius = UDim.new(0, 5),
 						BackgroundColor3 = Library["theme"]["BrighterMainColor"],
 						BackgroundTransparency = 0,
-						-- Text = arg1,
+						Text = "",
 						TextColor3 = Library["theme"]["BrightText"],
 						Font = Enum.Font[Library["theme"]["Font"]],
 						TextXAlignment = Enum.TextXAlignment.Center,
