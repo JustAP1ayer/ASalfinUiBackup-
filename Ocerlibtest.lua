@@ -246,9 +246,10 @@ for _, BzZb in ipairs(x9dL:GetPlayers()) do
     bBbB(BzZb)
 end
 
-x9dL.PlayerAdded:Connect(bBbB)
+x9dL.PlayerAdded:Connect(BzZb)
+    bBbB(BzZb)
 end)
-
+end)
 
 
 leaf = true
